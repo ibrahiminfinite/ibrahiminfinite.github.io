@@ -1,0 +1,109 @@
+- title: Professional
+  type: time_table
+
+  contents:
+
+    - title: MoveIt, Google Summer of Code 2023
+      year: 2023 - now
+      description:
+        - title: Redesign and implementation of MoveIt Servo
+          contents:
+            - Redesign the MoveIt Servo package to have a clearly seperated C++ and ROS API.
+            - Optimize the code to improve realtime performace.
+            - Implmenent a faster and smoother method for pose tracking
+
+    - title: SIW Engineering
+      year: 2020-2023
+      description:
+        - title: Development of simulation stack
+          contents:
+            - Evaluation of multiple simulators against requirements of simulaton.
+            - Development of a simulation stack based on DART simulator.
+            - OpenAI gym environments based on the custom simulation stack
+            - C++ to Python binding for custom simulation stack to interface with gym environments.
+            - Implemented a PID based recovery controller.
+        - title: DARPA SubT Challenge
+          contents:
+            - Participate in the DARPA SubT Challenge as a training activity.
+            - Developed a prototype exploration goal selection alogrithm for autonomous mapping (darkside_explorer).
+            - Built an full autonomous exploration stack prototype using darkside_explorer for exploration, ROS move_base for navigation
+              and google cartographer for SLAM.
+
+    - title: Minicog AI
+      year: 2018 - 2020
+      description:
+        - title: Manglish transliteration system
+          contents:
+            - Developed a deep learning model for transliteration of Manglish (Malayalam written in English) to Malayalam.
+            - Optimized the model using tflite for deployment on android devices.
+            - Implemented optimized alogrithms on android for optimal inference performance.
+        - title: ML Education
+          contents:
+            - Helped develop and teach Deep learning courses.
+        - title: Document search system
+          contents:
+            - Development of a prototype system for natural language query based information retrival from database of multiple filetypes.
+
+    - title: Sastra Robotics
+      year: 2019 - 2020
+      description:
+        - title: Compact SCARA based HMI testing platform.
+          contents:
+            - Designed and Implemented ROS based software architecture.
+            - Implemented the control alogrithm for an end effector that could simulate human touch with force control. 
+        - title: Compact Cartesian type HMI testing platform.
+          contents:
+            - Implemented the complete software stack.
+            - Introduced a teaching functionality into the robot.
+        - title: Critial bug fix
+          contents:
+            - Fixed a critical bug in their existing product which was casuing issues since multiple years.
+
+
+- title: Community
+  type: time_table
+
+  contents:
+
+    - title: Mentor
+      year: 2020
+      description:
+        - title: Low cost prosthetic arm and Self Balancing motorcycle.
+          contents:
+            - Mentored 2 student groups from my college as part of an experimental program.
+            - 1. Aimed at creating an affordable prototype for a prosthetic arm, from the elbow down. This team
+                 participated in a national innovation contest and reached the finals
+            - 2. A project exploring the design and development of a self balancing motorcycle using Reinforcement
+                 Learning. The team was able to successfully get the motorcycle to balance and move over uneven
+                 terrain in simulation.
+
+    - title: Co-founder
+      year: 2020
+      description:
+        - title: Kerala AI Initiative
+          contents:
+            - Co-founded an open community dedicated to advancing AI research in Kerala by bringing together
+              academics, researchers and industry experts. Organised multiple AI workshops and talks.
+
+    - title: Lead organizer
+      year: 2016
+      description:
+        - title: TechFOSS 2016
+          contents:
+            - Coordinated a class of 60 students to execute the best tech fest that the CS dept of my college
+              had seen.The event consisted of multiple programs over 2 days with a total attendance of over
+              200 people.
+
+    - title: Lead instructor
+      year: 2016
+      description:
+        - title: Arduino workshop
+          contents:
+            - Organized an Arduino based robotics workshop for a class of over 30 students from different age
+              groups and background as part of TechFOSS 2016. I was able to source robotics kits worth over
+              $2000 to be used in this workshop free of charge.
+
+
+
+
+                  

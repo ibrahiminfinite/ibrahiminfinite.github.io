@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: IbrahimInfinite # the website title (if blank, full name will be used instead)
+title:  V Mohammed Ibrahim # the website title (if blank, full name will be used instead)
 first_name: V
 middle_name: Mohammed
 last_name: Ibrahim
@@ -64,12 +64,11 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # -----------------------------------------------------------------------------
 
 github_username: ibrahiminfinite
-twitter_username: ibrahiminfinite
 linkedin_username: ibrahiminfinite
 instagram_id: ibrahiminfinite
 
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  I prefer to be contacted via the mail
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -133,19 +132,6 @@ jekyll-minifier:
     harmony: true
 
 # -----------------------------------------------------------------------------
-# Jekyll Archives
-# -----------------------------------------------------------------------------
-
-jekyll-archives:
-  enabled: [year, tags] # enables year, tag and category archives (remove if you need to disable one of them).
-  layouts:
-    year: archive-year
-    tag: archive-tag
-  permalinks:
-    year: '/blog/:year/'
-    tag: '/blog/tag/:name/'
-
-# -----------------------------------------------------------------------------
 # Jekyll Link Attributes
 # -----------------------------------------------------------------------------
 
@@ -188,7 +174,7 @@ enable_masonry:             true   # enables automatic project cards arrangement
 enable_math:                true   # enables math typesetting (uses MathJax)
 enable_tooltips:            false  # enables automatic tooltip links generated
                                    # for each section titles on pages and posts
-enable_darkmode:            true   # enables switching between light/dark modes
+enable_darkmode:            false   # enables switching between light/dark modes
 enable_navbar_social:       false  # enables displaying social links in the
                                    # navbar on the about page
 enable_project_categories:  true   # enables categorization of projects into
