@@ -1,5 +1,462 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://ibrahiminfinite.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ibrahiminfinite.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-29T09:42:11+00:00</updated><id>https://ibrahiminfinite.github.io/feed.xml</id><title type="html">V Mohammed Ibrahim</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-</subtitle><entry><title type="html">On being your own boss</title><link href="https://ibrahiminfinite.github.io/blog/2018/own-boss/" rel="alternate" type="text/html" title="On being your own boss" /><published>2018-08-12T00:00:00+00:00</published><updated>2018-08-12T00:00:00+00:00</updated><id>https://ibrahiminfinite.github.io/blog/2018/own-boss</id><content type="html" xml:base="https://ibrahiminfinite.github.io/blog/2018/own-boss/"><![CDATA[<p>So you want to be your own boss?</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://ibrahiminfinite.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ibrahiminfinite.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-29T10:46:40+00:00</updated><id>https://ibrahiminfinite.github.io/feed.xml</id><title type="html">V Mohammed Ibrahim</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+</subtitle><entry><title type="html">Coppelia simulator basics</title><link href="https://ibrahiminfinite.github.io/blog/2023/coppelia_basics/" rel="alternate" type="text/html" title="Coppelia simulator basics" /><published>2023-01-05T00:00:00+00:00</published><updated>2023-01-05T00:00:00+00:00</updated><id>https://ibrahiminfinite.github.io/blog/2023/coppelia_basics</id><content type="html" xml:base="https://ibrahiminfinite.github.io/blog/2023/coppelia_basics/"><![CDATA[<p>This tutorial will explore coppelia sim and understand basic interactions
+using the ZeroMQ remote API</p>
+
+<p>The tutorial was made on ubuntu 20.04</p>
+
+<p>After studyuing this tutorial you will understand how to:</p>
+
+<ul>
+  <li>install Coppelia Simulator</li>
+  <li>add and manipulate basic shapes</li>
+  <li>add and manipulate joints</li>
+  <li>setup ZeroMQ remote api</li>
+  <li>
+    <p>interact with the simulator and simulation using the ZeroMQ API</p>
+
+    <blockquote>
+      <p>Note : The tutorial assumes you have a folder named <code class="language-plaintext highlighter-rouge">coppelia</code> in your home directory, so you should create it first
+  <code class="language-plaintext highlighter-rouge">$ mkdir ~/coppelia</code></p>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="installing-the-simulator">Installing the simulator</h2>
+
+<ol>
+  <li>
+    <p>Visit the coppelia simulator website and go to downloads section.
+https://www.coppeliarobotics.com/downloads</p>
+  </li>
+  <li>Download the edu version (since we are not using it for commercial purposes)</li>
+  <li>
+    <p>Extract the downloaded folder and copy to desired location</p>
+
+    <p>I am going to assume that we have renamed the extracted folder to <code class="language-plaintext highlighter-rouge">CoppeliaSim</code> and placed it at  <code class="language-plaintext highlighter-rouge">/home/&lt;user&gt;/coppelia/CoppeliaSim</code></p>
+  </li>
+  <li>
+    <p>Test the installation by going to <code class="language-plaintext highlighter-rouge">/home/&lt;user&gt;/coppelia/CoppeliaSim</code> and running ./coppeliaSim</p>
+
+    <p>Once the simulator starts up, you should see the following screen.</p>
+    <blockquote>
+      <p>The version of the simulator used here is <code class="language-plaintext highlighter-rouge">4.4.0 rev 0</code>, if you are using another version , there could be slight differences.</p>
+    </blockquote>
+  </li>
+  <li>If you saw the screen,  coppelia simualtor has successfully been installed on your system.</li>
+</ol>
+
+<div class="row justify-content-center">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/coppelia_basics/coppelia_start_screen-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/coppelia_basics/coppelia_start_screen-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/coppelia_basics/coppelia_start_screen-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/coppelia_basics/coppelia_start_screen.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+<div class="caption">
+    Start screen
+</div>
+
+<h2 id="creating-a-simple-robot">Creating a simple robot</h2>
+
+<p>Before proceeding further, you should familiarize with the interface of the simuator so that you know what the terms being talked about are referring to.
+you can find the refrence in the  <code class="language-plaintext highlighter-rouge">User Interface</code> section of https://www.coppeliarobotics.com/helpFiles/index.html</p>
+
+<p>Now that the simulator is ready for use, we will create our own simple robot arm to explore and understand how robot/models are represented in CoppeliaSim.</p>
+
+<p>Our robot is going to be a 1 DOF robot arm. It is going to consist of :</p>
+
+<ul>
+  <li>A tall cuboidal base</li>
+  <li>One cylindrical link attached to the base by a revolute joint.</li>
+</ul>
+
+<ol>
+  <li>Go to Menu –&gt; Add –&gt; Primitive Shape –&gt; Cubiod, set dimensions
+x = 0.1, y = 0.1 and z = 0.2, rename the shape to ‘robot_base’. you should see an object like this</li>
+</ol>
+
+<div class="row mt-1 justify-content-center">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/coppelia_basics/bot_base_screen-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/coppelia_basics/bot_base_screen-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/coppelia_basics/bot_base_screen-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/coppelia_basics/bot_base_screen.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+<div class="caption">
+    Start screen
+</div>
+
+<ol>
+  <li>
+    <p>Next , we will add a revolute joint.
+Go to Menu –&gt; Add –&gt; Joint –&gt; Revolute and rename it to <code class="language-plaintext highlighter-rouge">shoulder_joint</code>. This will create a joint at the origin, to place the joint at our desired position (i.e top of the cuboid) we need to apply translation to the joint.</p>
+
+    <ul>
+      <li>Select the joint from scene hierarchy</li>
+      <li>click on the translation button</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="row justify-content-center">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/coppelia_basics/translation_button-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/coppelia_basics/translation_button-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/coppelia_basics/translation_button-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/coppelia_basics/translation_button.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+
+<ul>
+  <li>A pop up window will appear, select the position tab and you should see options like this.</li>
+</ul>
+
+<div class="row justify-content-center">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/coppelia_basics/translation_pop_up-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/coppelia_basics/translation_pop_up-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/coppelia_basics/translation_pop_up-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/coppelia_basics/translation_pop_up.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+
+<ul>
+  <li>
+    <p>Keep the <code class="language-plaintext highlighter-rouge">Relative to:</code> option set to <code class="language-plaintext highlighter-rouge">World</code> and set value of Z to 0.25 so that the joint origin is slightly above the robot 
+   base</p>
+  </li>
+  <li>
+    <p>The default axis of rotation for the revolute joint in coppelia sim is the z-axis, so we do not need to modify orientation since the axis of rotation we want is along z as well.</p>
+  </li>
+</ul>
+
+<p>This should give you a result like this.</p>
+
+<div class="row justify-content-center">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/coppelia_basics/shoulder_joint-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/coppelia_basics/shoulder_joint-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/coppelia_basics/shoulder_joint-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/coppelia_basics/shoulder_joint.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+<div class="caption">
+    Shoulder joint
+</div>
+
+<ol>
+  <li>
+    <p>The next step is to add a link, select <code class="language-plaintext highlighter-rouge">Cylinder</code> from the <code class="language-plaintext highlighter-rouge">Primitive Shapes</code> and set value of x = 0.01 and z = 0.2. This will create a cylinder but you cannot see it at this point since it is inside the base. To place it properly , we need to apply some translations and rotations.</p>
+
+    <ul>
+      <li>Select the cylinder from scene hierarchy</li>
+      <li>Select the translation button and go to position tab like before</li>
+      <li>Set y = 0.1 and z = 0.25</li>
+      <li>Close the window and click on the rotation button</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="row justify-content-center">
+    <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/coppelia_basics/rotation_button-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/coppelia_basics/rotation_button-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/coppelia_basics/rotation_button-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/coppelia_basics/rotation_button.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+<div class="caption">
+    Rotation button
+</div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Go to orientation tab, set `Aplha` = -90
+</code></pre></div></div>
+
+<div class="row justify-content-center">
+    <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/coppelia_basics/orientation_window-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/coppelia_basics/orientation_window-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/coppelia_basics/orientation_window-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/coppelia_basics/orientation_window.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+<div class="caption">
+    Orientation window
+</div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Now you should see the cylinder properly placed like this.
+</code></pre></div></div>
+
+<div class="row justify-content-center">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/coppelia_basics/shoulder_link-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/coppelia_basics/shoulder_link-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/coppelia_basics/shoulder_link-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/coppelia_basics/shoulder_link.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+<div class="caption">
+    Shoulder link
+</div>
+
+<ol>
+  <li>
+    <p>Now we have all the parts we need, but they exist as independent components and are not connected to each other. In this step we will create those connections that describe the structue of the robot.</p>
+
+    <ul>
+      <li>Select the <code class="language-plaintext highlighter-rouge">shoulder_joint</code> from scene hierarchy , press <code class="language-plaintext highlighter-rouge">ctrl</code> and select <code class="language-plaintext highlighter-rouge">robot_base</code>.</li>
+      <li>From Menu –&gt; Edit –&gt; Make last selected object parent</li>
+    </ul>
+
+    <p>This makes <code class="language-plaintext highlighter-rouge">shoulder_joint</code> attached to <code class="language-plaintext highlighter-rouge">robot_base</code></p>
+
+    <ul>
+      <li>Select <code class="language-plaintext highlighter-rouge">shoulder_link</code> , press <code class="language-plaintext highlighter-rouge">ctrl</code> and select <code class="language-plaintext highlighter-rouge">shoulder_joint</code></li>
+      <li>Select ‘Make last selected object parent’ from Edit</li>
+    </ul>
+
+    <p>Now the <code class="language-plaintext highlighter-rouge">shoudler_link</code> is attached to <code class="language-plaintext highlighter-rouge">shoulder_joint</code> and you have an overall structure like this.</p>
+  </li>
+</ol>
+
+<div class="row justify-content-center">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/coppelia_basics/robot_structure-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/coppelia_basics/robot_structure-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/coppelia_basics/robot_structure-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/coppelia_basics/robot_structure.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+
+<ol>
+  <li>
+    <p>Once we have our structure, we need to tell the simulator how our <code class="language-plaintext highlighter-rouge">shoulder_joint</code> behaves.</p>
+
+    <ul>
+      <li>Double click on the joint icon next to <code class="language-plaintext highlighter-rouge">shoudler_joint</code> in the scene hierarchy to open the object properties window.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="row justify-content-center">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/coppelia_basics/scene_object_properties-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/coppelia_basics/scene_object_properties-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/coppelia_basics/scene_object_properties-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/coppelia_basics/scene_object_properties.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Selct `Dynamic Properties Dialog` to open the joint dynamics properties.
+</code></pre></div></div>
+
+<div class="row justify-content-center">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/coppelia_basics/joint_dynamic_properties-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/coppelia_basics/joint_dynamic_properties-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/coppelia_basics/joint_dynamic_properties-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/coppelia_basics/joint_dynamic_properties.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Set `Control Mode` to velocity and set target velocity and torque to 0
+
+- close the property windows.
+
+
+The robot is now ready to be used.
+</code></pre></div></div>
+
+<h2 id="install-zeromq-remote-api">Install ZeroMQ Remote API</h2>
+
+<p>We are going to use the ZeroMQ python remote API provided by CoppeliaSim.</p>
+
+<ol>
+  <li>Set variable used by cmake to find CoppeliaSim
+    <blockquote>
+      <p><code class="language-plaintext highlighter-rouge">export COPPELIASIM_ROOT_DIR=/home/&lt;user&gt;/coppelia/CoppeliaSim</code></p>
+    </blockquote>
+  </li>
+  <li>Follow instructions on https://github.com/CoppeliaRobotics/zmqRemoteApi to install the library.</li>
+</ol>
+
+<h2 id="setup-env-to-use-the-api-from-python">Setup env to use the api from python</h2>
+
+<p>To keep things clean, we will create a python virtual environment to work in.
+If you dont have python3-venv installed yet, you should install it first.</p>
+
+<ol>
+  <li>
+    <p>create a venv named coppelia_env 
+  <code class="language-plaintext highlighter-rouge">$ python3 -m venv ~/copellia/coppelia_env</code></p>
+  </li>
+  <li>
+    <p>Activate the env using <code class="language-plaintext highlighter-rouge">$ source ~/coppelia/coppelia_env/bin/activate</code></p>
+  </li>
+  <li>
+    <p>Follow instructions on https://www.coppeliarobotics.com/helpFiles/en/zmqRemoteApiOverview.htm to install required python modules.</p>
+  </li>
+</ol>
+
+<h2 id="controlling-the-robot-using-the-remote-api-from-python">Controlling the robot using the remote API from python</h2>
+
+<p>API Reference : https://www.coppeliarobotics.com/helpFiles/en/apiFunctions.htm</p>
+
+<pre><code class="language-Python">
+import sys
+import time
+# Add the path to  zmq python client to system paths
+sys.path.append("~/coppelia/zmqRemoteApi/clients/python")
+
+from zmqRemoteApi import RemoteAPIClient
+
+client = RemoteAPIClient()
+
+# Enable client stepping so that we can manually step through the simulation
+client.setStepping(True)
+
+# Get the simulation object
+sim = client.getObject('sim')
+
+# From the simulation get the handle for the shoulder joint
+shoulder = sim.getObject('/robot_base/shoulder_joint')
+
+# Check the state of the joint
+jointPosition = sim.getJointPosition(shoulder)
+jointVelocity = sim.getJointVelocity(shoulder)
+
+# Set desired joint velocity
+targetVelocity = 2  # deg/s
+maxForce = 0.1 # Nm
+sim.setJointTargetVelocity(shoulder, targetVelocity)
+sim.setJointMaxForce(shoulder, maxForce)
+
+# Simulation loop
+# We will simulate 50 steps
+
+sim.startSimulation()
+
+for _ in range(50):
+    # Run one simulation step
+    client.step()
+    time.sleep(0.1)
+    print(sim.getJointPosition(shoulder))
+
+sim.stopSimulation()
+
+</code></pre>]]></content><author><name></name></author><category term="tech" /><summary type="html"><![CDATA[Getting started with the coppelia simulator]]></summary></entry><entry><title type="html">On being your own boss</title><link href="https://ibrahiminfinite.github.io/blog/2018/own-boss/" rel="alternate" type="text/html" title="On being your own boss" /><published>2018-08-12T00:00:00+00:00</published><updated>2018-08-12T00:00:00+00:00</updated><id>https://ibrahiminfinite.github.io/blog/2018/own-boss</id><content type="html" xml:base="https://ibrahiminfinite.github.io/blog/2018/own-boss/"><![CDATA[<p>So you want to be your own boss?</p>
 
 <p>You want to be that founder /co-founder ,the CEO/CTO of your own company?</p>
 
