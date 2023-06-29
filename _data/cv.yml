@@ -26,7 +26,7 @@
           contents:
             - Participate in the DARPA SubT Challenge as a training activity.
             - Developed a prototype exploration goal selection alogrithm for autonomous mapping (darkside_explorer).
-            - Built an full autonomous exploration stack prototype using darkside_explorer for exploration, ROS move_base for navigation
+            - Built an autonomous exploration stack prototype using darkside_explorer for exploration, ROS move_base for navigation
               and google cartographer for SLAM.
 
     - title: Minicog AI
@@ -59,6 +59,37 @@
           contents:
             - Fixed a critical bug in their existing product which was casuing issues since multiple years.
 
+
+- title: Education
+  type: time_table
+
+  contents:
+
+    - title: Udacity
+      year: 2023
+      description: 
+        - title: Sensor Fusion Nanodegree
+          contents:
+            - Feature detection and extraction from images
+            - Objection segmentation from pointcloud data.
+            - Radar based motion estimation.
+            - Motion estimation using sensor fusion of radar and lidar data using unscented kalman filter. 
+
+    - title: Udacity
+      year: 2020
+      description:
+        - title: C++ Nanodegree
+          contents:
+          - Traffic flow simulation
+          - System resource usage monitor
+
+    - title: Cochin University of Science and Technology
+      year: 2017
+      description:
+        - title: Bachelor of Technology, Computer Science and Engineering
+          contents:
+          - Self-Learning Robotic Assembler
+          - Guided Assembly
 
 - title: Community
   type: time_table
