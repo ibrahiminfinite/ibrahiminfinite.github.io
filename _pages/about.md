@@ -25,5 +25,5 @@ I enjoy working on robotics across the stack, while I understand and have worked
 
 I have previously worked with fast paced multi-diciplinary teams to develop robotic manipulators for various HMI panel testing rquirements for organizations like BOSCH. Recent works involved development and maintaince of simulation stack and simulation assets for developing control strategies for a quadrupedal robot. 
 
-When I am not working I enjoy motorcycle rides to the mountains, there is something about the twisty and misty roads of the mountains that call to you.
+When I am not working,  I enjoy reading or motorcycle rides to the mountains.
 
