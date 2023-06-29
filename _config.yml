@@ -82,7 +82,7 @@ permalink: /blog/:year/:title/
 pagination:
   enabled: true
 
-display_tags: ['life'] # these tags will be displayed on the front page of your blog
+display_tags: ['life', 'tech'] # these tags will be displayed on the front page of your blog
 display_categories: # these categories will be displayed on the front page of your blog
 
 
