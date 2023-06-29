@@ -83,6 +83,10 @@ permalink: /blog/:year/:title/
 pagination:
   enabled: true
 
+display_tags: ['life'] # these tags will be displayed on the front page of your blog
+display_categories: # these categories will be displayed on the front page of your blog
+
+
 related_blog_posts:
   enabled: false
   max_related: 5
@@ -167,26 +171,6 @@ defaults:
       path: "assets"
     values:
       sitemap: false
-
-
-# -----------------------------------------------------------------------------
-# Jekyll Archives
-# -----------------------------------------------------------------------------
-
-jekyll-archives:
-  enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
-  layouts:
-    year: archive-year
-    tag: archive-tag
-    category: archive-category
-  permalinks:
-    year: '/blog/:year/'
-    tag: '/blog/tag/:name/'
-    category: '/blog/category/:name/'
-
-display_tags: ['life'] # these tags will be displayed on the front page of your blog
-display_categories: # these categories will be displayed on the front page of your blog
-
 
 # -----------------------------------------------------------------------------
 # Jekyll Minifier
