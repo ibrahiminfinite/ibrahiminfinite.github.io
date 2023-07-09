@@ -2,24 +2,23 @@
 <html lang="en">
 
   <!-- Head -->
-  <head>    <!-- Metadata, OpenGraph and Schema.org -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
     
 
     <!-- Standard metadata -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>
-        blog | V Mohammed Ibrahim</title>
-    <meta name="author" content="V Mohammed Ibrahim" />
-    <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-" />
-    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website" />
+    <title>Google Summer of Code - Journal | V Mohammed Ibrahim</title>
+    <meta name="author" content="V Mohammed Ibrahim">
+    <meta name="description" content="GSoC 2023 adventures">
+    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
 
 
     <!-- Bootstrap & MDB -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
 
     <!-- Bootstrap Table -->
     <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
@@ -30,16 +29,16 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
 
     <!-- Code Syntax Highlighting -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
 
     
 
     <!-- Styles -->
     
-    <link rel="shortcut icon" href="/assets/img/logo_new.webp"/>
+    <link rel="shortcut icon" href="/assets/img/logo_new.webp">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://ibrahiminfinite.github.io/blog/">
+    <link rel="canonical" href="https://ibrahiminfinite.github.io/blog/2023/GSoC-journey/">
 
     <!-- Dark Mode -->
     
@@ -98,142 +97,53 @@
     <!-- Content -->
     <div class="container mt-5">
       
-        <div class="post">
+        <!-- _layouts/post.html -->
 
-  
-  
+<div class="post">
 
-  
-  <div class="header-bar">
-    <h1>blog</h1>
-    <h2>My thoughts on stuff</h2>
-  </div>
-  
-
-  
-  <div class="tag-category-list">
-    <ul class="p-0 m-0">
-      
-        <li>
-          <i class="fas fa-hashtag fa-sm"></i> <a href="/blog/tag/life">life</a>
-        </li>
-        
-          <p>&bull;</p>
-        
-      
-        <li>
-          <i class="fas fa-hashtag fa-sm"></i> <a href="/blog/tag/tech">tech</a>
-        </li>
-        
-      
-      
-      
-    </ul>
-  </div>
-  
-
-  <ul class="post-list">
-    
-
-    
-    
-    
-    
-
-    <li><h3>
-        
-          <a class="post-title" href="/blog/2023/GSoC-journey/">Google Summer of Code - Journal</a>
-        
-      </h3>
-      <p>GSoC 2023 adventures</p>
-      <p class="post-meta">
-        6 min read &nbsp; &middot; &nbsp;
-        July 9, 2023
-      </p>
-      <p class="post-tags">
-        <a href="/blog/2023">
-          <i class="fas fa-calendar fa-sm"></i> 2023 </a>
-
-          
-          &nbsp; &middot; &nbsp;
-            
-            <a href="/blog/tag/life">
-              <i class="fas fa-hashtag fa-sm"></i> life</a> &nbsp;
-              
+  <header class="post-header">
+    <h1 class="post-title">Google Summer of Code - Journal</h1>
+    <p class="post-meta">July 9, 2023</p>
+    <p class="post-tags">
+      <a href="/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
+        ·  
+        <a href="/blog/tag/life">
+          <i class="fas fa-hashtag fa-sm"></i> life</a>  
           
 
-          
-    </p></li>
+    </p>
+  </header>
 
+  <article class="post-content">
     
+    <div id="markdown-content">
+      <p>MoveIt is a prevalent open-source library in the robotic manipulation world, and it is the default choice for robotic manipulation with ROS2.
+There were many projects to choose from; however, the one I found interesting was the Servo refactoring project, and discussions with the potential project mentors (Sebastain and Andy, super helpful and very cool people) revealed that it would be a welcome contribution.</p>
 
-    
-    
-    
-    
+<p>I spent some time understanding how to navigate the MoveIt codebase and the workflow. My first contribution was a small but beneficial performance optimization for the Rukig trajectory smoothing. This process gave me an overview of the contribution and review process for Moveit. Moreover, it gave me a sense of what to expect from the community.</p>
 
-    <li><h3>
-        
-          <a class="post-title" href="/blog/2023/coppelia_basics/">Coppelia simulator basics</a>
-        
-      </h3>
-      <p>Getting started with the coppelia simulator</p>
-      <p class="post-meta">
-        10 min read &nbsp; &middot; &nbsp;
-        January 5, 2023
-      </p>
-      <p class="post-tags">
-        <a href="/blog/2023">
-          <i class="fas fa-calendar fa-sm"></i> 2023 </a>
+<p>The next step was to understand the Servo and its usage. An initial pass-through made it clear that the intended use case had evolved; the rigidity of the original design was noticeable. At this point, I stopped looking at the code and started looking through the issues and discussions to find any information regarding Servo, and it led me to a GitHub discussion written by a maintainer of MoveIt, regarding the design issues existing in MoveIt, which provided insight into the design goals that MoveIt was striving for. Now armed with the knowledge of Servo’s current limitations, the expected results for the project, and a set of design goals to guide the new design, I went back to the Servo codebase for a detailed study.</p>
 
-          
-          &nbsp; &middot; &nbsp;
-            
-            <a href="/blog/tag/tech">
-              <i class="fas fa-hashtag fa-sm"></i> tech</a> &nbsp;
-              
-          
+<p>The second analysis identified and isolated the core functionalities, use cases, and the data flow within MoveIt Servo. Based on the data gathered from this and the previous research, I prepared a design draft for the new implementation and presented it to the mentors. We finalized a design after a couple of iterations.</p>
 
-          
-    </p></li>
+<p>At this point, the application period had started; I submitted my application which contained the proposed design, a rough timeline, and some relevant information about me. I had done everything as diligently as possible till then; the rest was up to the process. However, my motivation for participating in GSoC is to make meaningful open-source contributions, so I set out to find more issues to solve within MoveIt.</p>
 
-    
+<p>While going through the issues, I came across one that suggested changing a hardcoded parameter in the Butterworth filter plugin to a more configurable ROS 2 parameter using the generate_parameter_library. I found this issue interesting because one of the things that the proposal iterations added is the migration of Servo to generate_parameter_library, which is PickNik’s solution to standardize the use of ROS2 parameters within MoveIt, as a stretch goal for the project. So I got to work figuring out how to integrate generate_parameter_library into the online_trajectory_smoothing package, which contained the Butterworth plugin; this exercise equipped me with the understanding necessary to finish the stretch goal easily, and I also ended up making another useful contribution.</p>
 
-    
-    
-    
-    
+<p>The results are still half a month away, but I decided to tackle the stretch goal; if I ended up getting selected, I would have less work to do and could focus on more interesting elements of the project,  and if I did not get selected I would still have made progress on my original goal of creating more open-source contributions, with that decided, I mapped out the changes necessary to migrate Servo to use generate_parameter_library; even though the changes propagated throughout the codebase, they were not very involved, after one week of work, I had Servo migrated to generate_parameter_library, which was a significant contribution. As a bonus, I became more accustomed to the inner workings of Servo.</p>
 
-    <li><h3>
-        
-          <a class="post-title" href="/blog/2018/own-boss/">On being your own boss</a>
-        
-      </h3>
-      <p>Thoughts on taking responsiblity for yourself</p>
-      <p class="post-meta">
-        3 min read &nbsp; &middot; &nbsp;
-        August 12, 2018
-      </p>
-      <p class="post-tags">
-        <a href="/blog/2018">
-          <i class="fas fa-calendar fa-sm"></i> 2018 </a>
+<p>The GSoC selections came in on the 4th of May; MoveIt had two contributor slots, and I was one among them. It was a joyous moment; my dedication had paid off, and now I would get paid to do cool stuff. After a discussion with my mentors the next day, the official GSoC work started, May is for community bonding; however, there was already good communication between the mentors and me. In addition, I got introduced to the MoveIt maintainer meeting and met more of the people who kept MoveIt running.</p>
 
-          
-          &nbsp; &middot; &nbsp;
-            
-            <a href="/blog/tag/life">
-              <i class="fas fa-hashtag fa-sm"></i> life</a> &nbsp;
-              
-          
+<p>I immediately started experimenting with the new design for C++ APIs, as that was the main focus of this refactor; this was a significantly involved process as it required understanding not only the language constructs necessary to implement the design but also the robotics concepts and the significance of the mathematical operations used within Servo in addition to the MoveIt components. One month later, I had all the required C++ APIs working, along with a demo for each of those APIs.</p>
 
-          
-    </p></li>
+<p>Now came the part I knew would consume a major chunk of my time, writing the tests, mainly because I had limited exposure to testing and needed to learn how to set up tests when using ROS. The process took half a month, understanding the testing framework, figuring out the best way to test the APIs, and fixing any bugs found along the way. There was also a good refactoring of the inner logic of Servo to make it more test friendly and adhere to the design goals of MoveIt. The cause for this was that I followed the original implementation to some extent without questioning the validity of the signatures of some of the functions during my analysis, which introduced unnecessary dependencies that I could have identified in the design stage and avoided.</p>
 
-    
-  </ul>
+<p>It was time for mentor reviews, and we evaluated the APIs, applied the necessary changes, and gave it a good round of testing. The foundation of the new Servo was ready now, and I proceeded to implement the ROS APIs. Due to the time invested in establishing a good design, getting the ROS APIs done was easy.</p>
 
-  
+<p>To be continued…</p>
 
+    </div>
+  </article>
 </div>
 
       
@@ -242,7 +152,7 @@
     <!-- Footer -->    
     <footer class="fixed-bottom">
       <div class="container mt-0">
-        &copy; Copyright 2023 V Mohammed Ibrahim. Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+        © Copyright 2023 V Mohammed Ibrahim. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
 
       </div>
     </footer>
